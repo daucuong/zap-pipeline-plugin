@@ -18,7 +18,7 @@ public class ZapDriverStub implements ZapDriver {
     private String loadedSessionPath = "";
     private List<String> allowedHosts;
     private HashMap<Integer, Integer> failBuild = new HashMap<>();
-
+    private String zapDir;
 
     public ZapDriverStub() {
         super();
@@ -152,5 +152,10 @@ public class ZapDriverStub implements ZapDriver {
     @Override
     public boolean zapAliveCheck() {
         return true;
+    }
+
+    @Override
+    public void setZapDir(String zapDir) {
+        this.zapDir = zapDir;
     }
 }
