@@ -13,15 +13,17 @@ public class StartZapStepParameters {
     private String zapHome;
     private List<String> allowedHosts;
     private String sessionPath;
+    private String zapDir;
 
     public StartZapStepParameters(String host, int port, int timeout, String zapHome, List<String> allowedHosts,
-                                  String sessionPath) {
+                                  String sessionPath, String zapDir) {
         this.host = host;
         this.port = port;
         this.timeout = timeout == 0 ? DEFAULT_TIMEOUT : timeout;
         this.zapHome = (zapHome == null || zapHome.isEmpty()) ? DEFAULT_ZAP_HOME : zapHome;
         this.allowedHosts = (allowedHosts == null || allowedHosts.isEmpty()) ? DEFAULT_ALLOWED_HOSTS : allowedHosts;
         this.sessionPath = sessionPath;
+        this.zapDir = zapDir;
     }
 
     public String getHost() {
@@ -46,5 +48,9 @@ public class StartZapStepParameters {
 
     public String getSessionPath() {
         return sessionPath;
+    }
+
+    public String getZapDir() {
+        return zapDir;
     }
 }

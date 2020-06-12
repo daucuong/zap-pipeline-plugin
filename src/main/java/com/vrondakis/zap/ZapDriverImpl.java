@@ -37,7 +37,7 @@ public class ZapDriverImpl implements ZapDriver {
     private List<String> allowedHosts = new ArrayList<>();
     private final List<Integer> startedScans = new ArrayList<>();
     private int crawlId;
-
+    private String zapDir;
 
     /**
      * Calls the ZAP api
@@ -364,6 +364,9 @@ public class ZapDriverImpl implements ZapDriver {
         cmd.add(ZapDriverController.CMD_CONFIG);
         cmd.add(ZapDriverController.CMD_TIMEOUT);
 
+        cmd.add(ZapDriverController.CMD_ZAPDIR);
+        cmd.add(zapDir);
+
         try {
             launcher.launch().cmds(cmd).pwd(ws).start();
             launcher.getListener().getLogger().println("zap: Started successfully");
@@ -452,5 +455,9 @@ public class ZapDriverImpl implements ZapDriver {
 
     public List<String> getAllowedHosts() {
         return allowedHosts;
+    }
+
+    public void setZapDir(String zapDir) {
+        this.zapDir = zapDir;
     }
 }

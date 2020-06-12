@@ -68,12 +68,13 @@ public class StartZapExecution extends DefaultStepExecutionImpl {
         }
 
         ZapDriver zapDriver = ZapDriverController.newDriver(this.run);
+
         // Set ZAP properties
         zapDriver.setZapHost(zapStepParameters.getHost());
         zapDriver.setZapPort(zapStepParameters.getPort());
         zapDriver.setZapTimeout(zapStepParameters.getTimeout());
         zapDriver.setAllowedHosts(zapStepParameters.getAllowedHosts());
-
+        zapDriver.setZapDir(zapStepParameters.getZapDir());
 
         boolean success = zapDriver.startZapProcess(zapStepParameters.getZapHome(), workspace, launcher);
         if (!success) {
