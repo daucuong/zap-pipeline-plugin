@@ -14,9 +14,10 @@ public class StartZapStepParameters {
     private List<String> allowedHosts;
     private String sessionPath;
     private String zapDir;
+    private String apiKey;
 
     public StartZapStepParameters(String host, int port, int timeout, String zapHome, List<String> allowedHosts,
-                                  String sessionPath, String zapDir) {
+                                  String sessionPath, String zapDir, String apiKey) {
         this.host = host;
         this.port = port;
         this.timeout = timeout == 0 ? DEFAULT_TIMEOUT : timeout;
@@ -24,6 +25,7 @@ public class StartZapStepParameters {
         this.allowedHosts = (allowedHosts == null || allowedHosts.isEmpty()) ? DEFAULT_ALLOWED_HOSTS : allowedHosts;
         this.sessionPath = sessionPath;
         this.zapDir = zapDir;
+        this.apiKey = (apiKey == null || apiKey.isEmpty()) ? null : apiKey;
     }
 
     public String getHost() {
@@ -52,5 +54,9 @@ public class StartZapStepParameters {
 
     public String getZapDir() {
         return zapDir;
+    }
+
+    public String getApiKey() {
+        return apiKey;
     }
 }

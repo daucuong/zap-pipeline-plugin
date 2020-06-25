@@ -19,6 +19,7 @@ public class ZapDriverStub implements ZapDriver {
     private List<String> allowedHosts;
     private HashMap<Integer, Integer> failBuild = new HashMap<>();
     private String zapDir;
+    private String apiKey;
 
     public ZapDriverStub() {
         super();
@@ -157,5 +158,10 @@ public class ZapDriverStub implements ZapDriver {
     @Override
     public void setZapDir(String zapDir) {
         this.zapDir = zapDir;
+    }
+
+    @Override
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 }

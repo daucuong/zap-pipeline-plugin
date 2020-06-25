@@ -64,4 +64,6 @@ public interface ZapDriver {
     boolean zapAliveCheck();
 
     void setZapDir(String zapDir);
+
+    void setApiKey(String apiKey);
 }

@@ -38,6 +38,7 @@ public class ZapDriverImpl implements ZapDriver {
     private final List<Integer> startedScans = new ArrayList<>();
     private int crawlId;
     private String zapDir;
+    private String apiKey;
 
     /**
      * Calls the ZAP api
@@ -351,9 +352,14 @@ public class ZapDriverImpl implements ZapDriver {
 
         cmd.add(ZapDriverController.CMD_PORT);
         cmd.add(Integer.toString(zapPort));
-
-        cmd.add(ZapDriverController.CMD_CONFIG);
-        cmd.add(ZapDriverController.CMD_DISABLEKEY);
+        
+        if (apiKey == null) {
+            cmd.add(ZapDriverController.CMD_CONFIG);
+            cmd.add(ZapDriverController.CMD_DISABLEKEY);
+        } else {
+            cmd.add(ZapDriverController.CMD_CONFIG);
+            cmd.add("api.key=" + apiKey);
+        }
 
         cmd.add(ZapDriverController.CMD_CONFIG);
         cmd.add(ZapDriverController.CMD_REGEX);
@@ -366,6 +372,9 @@ public class ZapDriverImpl implements ZapDriver {
 
         cmd.add(ZapDriverController.CMD_ZAPDIR);
         cmd.add(zapDir);
+        
+        // Install addon 
+        cmd.add("-addoninstallall")
 
         try {
             launcher.launch().cmds(cmd).pwd(ws).start();
@@ -459,5 +468,9 @@ public class ZapDriverImpl implements ZapDriver {
 
     public void setZapDir(String zapDir) {
         this.zapDir = zapDir;
+    }
+
+     public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 }
