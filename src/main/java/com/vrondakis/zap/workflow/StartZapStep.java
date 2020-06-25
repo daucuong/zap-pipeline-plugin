@@ -28,7 +28,7 @@ public class StartZapStep extends Step {
     @DataBoundConstructor
     public StartZapStep(@CheckForNull String host, int port, int timeout, String zapHome, List<String> allowedHosts,
                         String sessionPath, String zapDir, String apiKey) {
-        zapStepParameters = new StartZapStepParameters(host, port, timeout, zapHome, allowedHosts, sessionPath, zapDir, String apiKey);
+        zapStepParameters = new StartZapStepParameters(host, port, timeout, zapHome, allowedHosts, sessionPath, zapDir, apiKey);
     }
 
     @Override
