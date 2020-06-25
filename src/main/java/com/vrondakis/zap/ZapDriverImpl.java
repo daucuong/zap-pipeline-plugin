@@ -374,7 +374,7 @@ public class ZapDriverImpl implements ZapDriver {
         cmd.add(zapDir);
         
         // Install addon 
-        cmd.add("-addoninstallall")
+        cmd.add("-addoninstallall");
 
         try {
             launcher.launch().cmds(cmd).pwd(ws).start();
